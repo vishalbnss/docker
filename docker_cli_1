@@ -1,0 +1,43 @@
+# Verify Docker Installation
+docker --version
+
+# Pull and Run Hello-World Image
+docker pull hello-world
+docker run hello-world
+
+# View All Containers
+docker ps -a
+
+# Remove Hello-World Container
+docker rm [container-id]
+
+# Remove Hello-World Image
+docker rmi hello-world
+
+# Pull Redis Image
+docker pull redis
+
+# Run Redis Container
+docker run --name my-redis -d redis
+
+# Check Running Containers
+docker ps
+
+# Access Redis CLI
+docker exec -it my-redis redis-cli
+
+# Set and Get a Redis Key-Value Pair
+SET name "Alice"
+GET name
+
+# Stop Redis Container
+docker stop my-redis
+
+# Restart Redis Container
+docker start my-redis
+
+# Remove Redis Container
+docker rm my-redis
+
+# Remove Redis Image
+docker rmi redis
