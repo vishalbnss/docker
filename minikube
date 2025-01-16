@@ -1,0 +1,81 @@
+
+Exercise 7, Topic 6: Deploying and Managing Monitoring Systems Using Nagios in Docker
+
+//Pull the Nagios Image
+
+bash
+
+docker pull jasonrivers/nagios:latest
+
+Run the Nagios Container
+
+bash
+
+docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
+
+Access the Nagios Dashboard
+Open your browser and go to: http://localhost:8888
+Login Credentials:
+Username: nagiosadmin
+Password: nagios
+
+Stop the Nagios Container
+bash
+
+docker stop nagiosdemo
+
+Remove the Nagios Container
+bash
+
+docker rm nagiosdemo
+
+Remove the Nagios Image
+bash
+docker rmi jasonrivers/nagios:latest
+
+Now for Exercise 7, Topic 5 (Minikube with Nginx):
+
+Exercise 7, Topic 5: Deploying and Scaling Applications Using Minikube
+
+Start Minikube
+bash
+minikube start
+
+Create the Nginx Deployment
+bash
+
+kubectl create deployment mynginx --image=nginx
+
+Expose the Deployment to the Outside World
+bash
+
+kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+
+Scale the Deployment to 4 Replicas
+bash
+
+kubectl scale deployment mynginx --replicas=4
+
+Access the Nginx App (Port Forwarding)
+bash
+
+kubectl port-forward svc/mynginx 8081:80
+
+Open your browser and go to: http://localhost:8081
+
+Cleanup
+Delete the Deployment and Service:
+bash
+
+kubectl delete deployment mynginx
+kubectl delete service mynginx
+
+Stop Minikube:
+bash
+
+minikube stop
+
+Delete the Minikube Cluster:
+bash
+
+minikube delete
