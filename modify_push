@@ -1,0 +1,15 @@
+docker pull ubuntu
+docker run -it --name newubuntu -d ubuntu
+docker exec -it <container-id> bash
+apt update
+apt install git -y
+git --version
+docker commit <container-id> your-dockerhub-username/newubuntu2024
+docker login
+docker push your-dockerhub-username/newubuntu2024
+docker pull your-dockerhub-username/newubuntu2024
+docker run --name newubuntu2024 -it your-dockerhub-username/newubuntu2024
+git --version
+docker stop <container-id>
+docker rm <container-id>
+docker rmi your-dockerhub-username/newubuntu2024
