@@ -1,0 +1,68 @@
+# Set Up Folder
+mkdir ~/DockerProjects/Redis
+cd ~/DockerProjects/Redis
+
+# Create Dockerfile
+echo -e 'FROM redis:latest\nCMD ["redis-server"]' > Dockerfile
+
+# Build Docker Image
+docker build -t redisnew .
+
+# Run Redis Container from Custom Image
+docker run --name myredisnew -d redisnew
+
+# View Running Containers
+docker ps
+
+# Stop Redis Container
+docker stop myredisnew
+
+# Login to Docker Hub
+docker login
+
+# View All Containers (Including Stopped)
+docker ps -a
+
+# Commit Container to New Image
+docker commit [container-id] budarajumadhurika/redis1
+
+# List Images
+docker images
+
+# Push Image to Docker Hub
+docker push budarajumadhurika/redis1
+
+# Remove Container
+docker rm [container-id]
+
+# Remove Image
+docker rmi budarajumadhurika/redis1
+
+# Logout from Docker Hub
+docker logout
+
+# Pull Image from Docker Hub
+docker pull budarajumadhurika/redis1
+
+# Run Container from Pulled Image
+docker run --name myredis -d budarajumadhurika/redis1
+
+# Access Redis CLI Inside Container
+docker exec -it myredis redis-cli
+
+# Set and Get a Redis Key-Value Pair
+SET name "Abcdef"
+GET name
+exit
+
+# Stop Redis Container
+docker stop myredis
+
+# Remove Redis Container
+docker rm [container-id]
+
+# List All Images
+docker images
+
+# Remove Redis Image
+docker rmi budarajumadhurika/redis1
